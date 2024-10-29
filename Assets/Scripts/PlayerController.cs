@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private PlayerControls controls;
     private bool isDashing;
+    private bool isAttacking;
 
     private void Awake()
     {
@@ -27,6 +28,9 @@ public class PlayerController : MonoBehaviour
 
         controls.Combat.Dash.performed += Dash;
         isDashing = false;
+
+        controls.Combat.Attack.performed += Attack;
+        isAttacking = false;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -50,15 +54,22 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = moveInput * moveSpeed;
     }
 
+    private void Attack(InputAction.CallbackContext ctx)
+    {
+        // Your code here
+    }
+
     private void Dash(InputAction.CallbackContext ctx)
     {
-        if (rb.linearVelocity != Vector2.zero)
+        if (rb.linearVelocity != Vector2.zero && !isDashing)
         {
             IEnumerator dashCoroutine = PerformDash();
             StartCoroutine(dashCoroutine);
         }
     }
 
+
+    // This smells but eh, whatever
     private IEnumerator PerformDash()
     {
         isDashing = true;
