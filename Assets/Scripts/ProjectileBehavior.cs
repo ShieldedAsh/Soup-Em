@@ -12,7 +12,7 @@ public class ProjectileBehavior : MonoBehaviour
     }
     
     /// <summary>
-    /// Sets targey of projectile based off of movement input
+    /// Sets target of projectile based off of movement input
     /// </summary>
     /// <param name="input">A 2D-Vector representing directional input from the player</param>
     public void SetTarget(Vector2 input)

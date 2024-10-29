@@ -59,20 +59,8 @@ public class PlayerController : MonoBehaviour
 
     private void Attack(InputAction.CallbackContext ctx)
     {
-        Vector2 launchPosition = transform.position;
-        Vector2 moveInput = controls.Combat.Move.ReadValue<Vector2>();
-
-        if (moveInput != Vector2.zero)
-        {
-            launchPosition += moveInput;
-        }
-        else
-        {
-            launchPosition += Vector2.up;
-        }
-
-        ProjectileBehavior projectile = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
-        projectile.SetTarget(moveInput);
+        IEnumerator attackCoroutine = ShootProjecctile();
+        StartCoroutine(attackCoroutine);
     }
 
     private void Dash(InputAction.CallbackContext ctx)
@@ -94,5 +82,25 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity /= 2;
         isDashing = false;
     }
-}
 
+    private IEnumerator ShootProjecctile()
+    {
+        isAttacking = true;
+        Vector2 launchPosition = transform.position;
+        Vector2 moveInput = controls.Combat.Attack.ReadValue<Vector2>();
+
+        if (moveInput != Vector2.zero)
+        {
+            launchPosition += moveInput;
+        }
+        else
+        {
+            launchPosition += Vector2.up;
+        }
+
+        ProjectileBehavior projectile = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
+        projectile.SetTarget(moveInput);
+        yield return new WaitForSeconds(.5f);
+        isAttacking = false;
+    }
+}
