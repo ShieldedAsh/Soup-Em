@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class ProjectileBehavior : MonoBehaviour
 {
-    public float Speed = 4.5f;
+    [SerializeField] private ProjectileData data;
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.right * Speed * Time.deltaTime;
+        transform.position += transform.right * data.Speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
