@@ -62,7 +62,14 @@ public class PlayerController : MonoBehaviour
         Vector2 launchPosition = transform.position;
         Vector2 moveInput = controls.Combat.Move.ReadValue<Vector2>();
 
-        launchPosition += moveInput;
+        if (moveInput != Vector2.zero)
+        {
+            launchPosition += moveInput;
+        }
+        else
+        {
+            launchPosition += Vector2.up;
+        }
 
         ProjectileBehavior projectile = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
         projectile.SetTarget(moveInput);

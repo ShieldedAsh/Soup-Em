@@ -17,8 +17,15 @@ public class ProjectileBehavior : MonoBehaviour
     /// <param name="input">A 2D-Vector representing directional input from the player</param>
     public void SetTarget(Vector2 input)
     {
-        Vector3 targetVector = transform.position + (Vector3) input;
-        direction = targetVector - transform.position;
+        if (input != Vector2.zero)
+        {
+            Vector3 targetVector = transform.position + (Vector3) input;
+            direction = targetVector - transform.position;
+        }
+        else
+        {
+            direction = Vector2.up;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
