@@ -59,8 +59,11 @@ public class PlayerController : MonoBehaviour
 
     private void Attack(InputAction.CallbackContext ctx)
     {
-        IEnumerator attackCoroutine = ShootProjecctile();
-        StartCoroutine(attackCoroutine);
+        if (!isAttacking)
+        {
+            IEnumerator attackCoroutine = ShootProjecctile();
+            StartCoroutine(attackCoroutine);
+        }
     }
 
     private void Dash(InputAction.CallbackContext ctx)
