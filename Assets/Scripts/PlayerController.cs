@@ -60,10 +60,12 @@ public class PlayerController : MonoBehaviour
     private void Attack(InputAction.CallbackContext ctx)
     {
         Vector2 launchPosition = transform.position;
+        Vector2 moveInput = controls.Combat.Move.ReadValue<Vector2>();
 
-        launchPosition += controls.Combat.Move.ReadValue<Vector2>();
+        launchPosition += moveInput;
 
-        Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
+        ProjectileBehavior projectile = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
+        projectile.SetTarget(moveInput);
     }
 
     private void Dash(InputAction.CallbackContext ctx)
