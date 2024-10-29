@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     private PlayerControls controls;
     private bool isDashing;
     private bool isAttacking;
+    
+    public ProjectileBehavior ProjectilePrefab;
+    public Transform LaunchOffset;
 
     private void Awake()
     {
@@ -56,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
     private void Attack(InputAction.CallbackContext ctx)
     {
-        // Your code here
+        Instantiate(ProjectilePrefab, LaunchOffset.position, transform.rotation);
     }
 
     private void Dash(InputAction.CallbackContext ctx)
