@@ -1,4 +1,6 @@
+using System.Collections;
 using Unity.VisualScripting;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +17,18 @@ public class PlayerController : MonoBehaviour
     //dash var
     public float dashForce;
 
+    private PlayerControls controls;
+    private bool isDashing;
+
+    private void Awake()
+    {
+        controls = InputManager.controls;
+        controls.Combat.Enable();
+
+        controls.Combat.Dash.performed += Dash;
+        isDashing = false;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,15 +39,33 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector2 move = MoveAction.ReadValue<Vector2>();
-        rb.linearVelocity = move * moveSpeed;
-
-        //dashing
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (!isDashing)
         {
-            rb.AddForce(move * dashForce, ForceMode2D.Impulse);
+            Move(controls.Combat.Move.ReadValue<Vector2>());
         }
+    }
 
+    private void Move(Vector2 moveInput)
+    {
+        rb.linearVelocity = moveInput * moveSpeed;
+    }
+
+    private void Dash(InputAction.CallbackContext ctx)
+    {
+        if (rb.linearVelocity != Vector2.zero)
+        {
+            IEnumerator dashCoroutine = PerformDash();
+            StartCoroutine(dashCoroutine);
+        }
+    }
+
+    private IEnumerator PerformDash()
+    {
+        isDashing = true;
+        rb.linearVelocity *= 2;
+        yield return new WaitForSeconds(.5f);
+        rb.linearVelocity /= 2;
+        isDashing = false;
     }
 }
 
