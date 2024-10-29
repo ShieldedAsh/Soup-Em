@@ -59,7 +59,11 @@ public class PlayerController : MonoBehaviour
 
     private void Attack(InputAction.CallbackContext ctx)
     {
-        Instantiate(ProjectilePrefab, LaunchOffset.position, transform.rotation);
+        Vector2 launchPosition = transform.position;
+
+        launchPosition += controls.Combat.Move.ReadValue<Vector2>();
+
+        Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
     }
 
     private void Dash(InputAction.CallbackContext ctx)

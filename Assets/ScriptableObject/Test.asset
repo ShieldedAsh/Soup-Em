@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   damage: 2
-  projectileSpeed: 4.5
+  projectileSpeed: 10
