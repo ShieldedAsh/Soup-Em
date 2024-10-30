@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class ProjectileBehavior : MonoBehaviour
 {
-    [SerializeField] private ProjectileData data;
+    [SerializeField] private ProjectileData stats;
     private Vector3 direction;
     
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        transform.position += data.Speed * Time.deltaTime * direction.normalized;
+        transform.position += stats.Speed * Time.deltaTime * direction.normalized;
     }
     
     /// <summary>
