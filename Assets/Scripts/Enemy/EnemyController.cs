@@ -10,11 +10,13 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D rb;
     private bool canMove;
 
+    private int health;
+
     private void Start()
     {
-        stats.CurrentHealth = 10;
+        health = 10;
 
-        if (targetPosition == null) 
+        if (targetPosition == null)
         {
             // if a target cannot be found, destroy this enemy instantly so it does not become a vegetable
             Debug.Log($"{gameObject.name}: Target not found!");
@@ -35,7 +37,7 @@ public class EnemyController : MonoBehaviour
             transform.position += stats.MoveSpeed * Time.deltaTime * direction.normalized;
         }
 
-        if (stats.CurrentHealth <= 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
             Debug.Log("Enemy dead");
@@ -44,7 +46,7 @@ public class EnemyController : MonoBehaviour
 
     public void RemoveHealth(int value)
     {
-        stats.CurrentHealth -= value;
+        health -= value;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
