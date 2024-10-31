@@ -1,11 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PowerupControl : MonoBehaviour
 {
+
+    public TMP_Text text;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        text.enabled = false;
     }
 
     // Update is called once per frame
@@ -13,7 +17,8 @@ public class PowerupControl : MonoBehaviour
     {
         if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
-            Debug.Log("No enemies left");
+            Debug.Log("All enemies dead");
+            text.enabled = true;
         }
     }
 }

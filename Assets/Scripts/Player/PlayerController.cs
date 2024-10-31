@@ -1,6 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private PlayerControls controls;
     private bool isDashing;
     private bool isAttacking;
-    
+
     public ProjectileBehavior ProjectilePrefab;
     public Transform LaunchOffset;
 

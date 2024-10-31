@@ -106,6 +106,7 @@ MonoBehaviour:
   moveSpeed: 10
   health: 0
   dashForce: 100
+  dashDuration: 0
   ProjectilePrefab: {fileID: 538685968676676921, guid: 25d3a9ed1d83f7a91b7919b9fce17021, type: 3}
   LaunchOffset: {fileID: 200727127307525127}
 --- !u!50 &8305144948232526324
