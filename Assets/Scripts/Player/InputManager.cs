@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[DefaultExecutionOrder(-1)]
 public class InputManager : MonoBehaviour
 {
     public static PlayerControls controls;
