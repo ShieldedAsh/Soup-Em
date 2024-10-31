@@ -6,13 +6,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    //Movement actions
-    public InputAction MoveAction;
-
     public Rigidbody2D rb;
 
     //reg movement vars
     public float moveSpeed;
+    [SerializeField] private int health;
+
+    public int Health { get { return health; } set { health = value; } }
 
     //dash var
     public float dashForce;
@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        MoveAction.Enable();
         rb = GetComponent<Rigidbody2D>();
     }
 

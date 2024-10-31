@@ -31,5 +31,10 @@ public class ProjectileBehavior : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(gameObject);
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<EnemyData>().CurrentHealth -= stats.Damage;
+        }
     }
 }

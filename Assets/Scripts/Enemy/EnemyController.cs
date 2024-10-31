@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
 
     private Vector3 targetPosition;
     private Rigidbody2D rb;
+    private bool canMove;
 
     private void Start()
     {
@@ -27,7 +28,11 @@ public class EnemyController : MonoBehaviour
     {
         Vector3 direction = targetTransform.position - transform.position;
 
-        transform.position += stats.MoveSpeed * Time.deltaTime * direction.normalized;
+
+        if (canMove)
+        {
+            transform.position += stats.MoveSpeed * Time.deltaTime * direction.normalized;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -35,7 +40,7 @@ public class EnemyController : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "Player":
-                // Deal damage to player
+                collision.gameObject.GetComponent<PlayerController>().Health -= stats.AttackDamage;
                 break;
         }
     }
