@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     //dash var
     public float dashForce;
+    public float dashDuration;
 
     private PlayerControls controls;
     private bool isDashing;
@@ -80,7 +81,7 @@ public class PlayerController : MonoBehaviour
     {
         isDashing = true;
         rb.linearVelocity *= 2;
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(dashDuration);
         rb.linearVelocity /= 2;
         isDashing = false;
     }

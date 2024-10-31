@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
+        stats.CurrentHealth = 10;
+
         if (targetPosition == null) 
         {
             // if a target cannot be found, destroy this enemy instantly so it does not become a vegetable
@@ -36,6 +38,7 @@ public class EnemyController : MonoBehaviour
         if (stats.CurrentHealth <= 0)
         {
             Destroy(gameObject);
+            Debug.Log("Enemy dead");
         }
     }
 
@@ -46,11 +49,16 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        switch (collision.gameObject.tag)
+        if (collision.gameObject.tag == "Player")
         {
-            case "Player":
-                collision.gameObject.GetComponent<PlayerController>().Health -= stats.AttackDamage;
-                break;
+            collision.gameObject.GetComponent<PlayerController>().Health -= stats.AttackDamage;
         }
+
+        Debug.Log("I died!");
+    }
+
+    private void OnDestroy()
+    {
+        // Debug.Log("FUcxk i died");
     }
 }
