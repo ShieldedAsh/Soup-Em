@@ -34,7 +34,8 @@ public class ProjectileBehavior : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<EnemyData>().CurrentHealth -= stats.Damage;
+            collision.gameObject.GetComponent<EnemyController>().RemoveHealth(stats.Damage);
+            Destroy(gameObject);
         }
     }
 }

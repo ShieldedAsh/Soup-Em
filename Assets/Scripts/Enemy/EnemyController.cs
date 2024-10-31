@@ -20,19 +20,28 @@ public class EnemyController : MonoBehaviour
             return;
         }
 
-        
         rb = gameObject.GetComponent<Rigidbody2D>();
+        canMove = true;
     }
 
     private void FixedUpdate()
     {
         Vector3 direction = targetTransform.position - transform.position;
 
-
         if (canMove)
         {
             transform.position += stats.MoveSpeed * Time.deltaTime * direction.normalized;
         }
+
+        if (stats.CurrentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void RemoveHealth(int value)
+    {
+        stats.CurrentHealth -= value;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
