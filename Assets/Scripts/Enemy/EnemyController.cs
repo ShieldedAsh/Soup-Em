@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
     private Vector3 targetPosition;
     private Rigidbody2D rb;
     private bool canMove;
-
+    private SpriteRenderer sr;
     private int health;
 
     private void Start()
@@ -26,6 +26,8 @@ public class EnemyController : MonoBehaviour
 
         rb = gameObject.GetComponent<Rigidbody2D>();
         canMove = true;
+
+        sr = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -42,11 +44,14 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
             Debug.Log("Enemy dead");
         }
+
+
     }
 
     public void RemoveHealth(int value)
     {
         health -= value;
+        StartCoroutine(colorSwitch());
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -62,5 +67,12 @@ public class EnemyController : MonoBehaviour
     private void OnDestroy()
     {
         // Debug.Log("FUcxk i died");
+    }
+
+    private IEnumerator colorSwitch()
+    {
+        sr.color = Color.red;
+        yield return new WaitForSeconds(1.0f);
+        sr.color = Color.blue;
     }
 }

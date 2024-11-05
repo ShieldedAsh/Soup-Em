@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Chili
+  - Projectile
   layers:
   - Default
   - TransparentFX

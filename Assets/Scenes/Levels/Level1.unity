@@ -925,6 +925,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1448057768130686334, guid: f877f4bbe3167dc41b5a877c049f2c5b, type: 3}
+      propertyPath: health
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448057768130686334, guid: f877f4bbe3167dc41b5a877c049f2c5b, type: 3}
       propertyPath: dashDuration
       value: 0.25
       objectReference: {fileID: 0}

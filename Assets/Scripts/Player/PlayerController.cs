@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
-
+    private SpriteRenderer sr;
     //reg movement vars
     public float moveSpeed;
     [SerializeField] private int health;
@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -73,6 +74,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            health -= 1;
+            StartCoroutine(colorSwitch());
+        }
+
+        if (health == 0)
+        {
+            Debug.Log("Player dead");
+            Destroy(gameObject);
+        }
+    }
+
 
     // This smells but eh, whatever
     private IEnumerator PerformDash()
@@ -103,5 +119,12 @@ public class PlayerController : MonoBehaviour
         projectile.SetTarget(moveInput);
         yield return new WaitForSeconds(.5f);
         isAttacking = false;
+    }
+
+    private IEnumerator colorSwitch()
+    {
+        sr.color = Color.red;
+        yield return new WaitForSeconds(1.0f);
+        sr.color = Color.white;
     }
 }
