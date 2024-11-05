@@ -81,6 +81,11 @@ public class PlayerController : MonoBehaviour
             health -= 1;
             StartCoroutine(colorSwitch());
         }
+        else if (collision.gameObject.tag == "StrongEnemy")
+        {
+            health -= 2;
+            StartCoroutine(colorSwitch());
+        }
 
         if (health == 0)
         {
