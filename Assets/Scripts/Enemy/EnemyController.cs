@@ -73,6 +73,6 @@ public class EnemyController : MonoBehaviour
     {
         sr.color = Color.red;
         yield return new WaitForSeconds(1.0f);
-        sr.color = Color.blue;
+        sr.color = Color.cyan;
     }
 }

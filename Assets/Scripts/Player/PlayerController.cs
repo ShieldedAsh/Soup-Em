@@ -104,19 +104,25 @@ public class PlayerController : MonoBehaviour
     {
         isAttacking = true;
         Vector2 launchPosition = transform.position;
-        Vector2 moveInput = controls.Combat.Attack.ReadValue<Vector2>();
+        //Vector2 moveInput = controls.Combat.Attack.ReadValue<Vector2>();
 
-        if (moveInput != Vector2.zero)
+        /*  if (moveInput != Vector2.zero)
         {
             launchPosition += moveInput;
         }
         else
         {
             launchPosition += Vector2.up;
-        }
+        }*/
 
         ProjectileBehavior projectile = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
-        projectile.SetTarget(moveInput);
+        ProjectileBehavior projectile2 = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
+        ProjectileBehavior projectile3 = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
+        ProjectileBehavior projectile4 = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
+        projectile.SetTarget(Vector2.up);
+        projectile2.SetTarget(Vector2.down);
+        projectile3.SetTarget(Vector2.left);
+        projectile4.SetTarget(Vector2.right);
         yield return new WaitForSeconds(.5f);
         isAttacking = false;
     }
