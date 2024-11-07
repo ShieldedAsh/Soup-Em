@@ -4,13 +4,13 @@ public class ProjectileBehavior : MonoBehaviour
 {
     [SerializeField] private ProjectileData stats;
     private Vector3 direction;
-    
+
     // Update is called once per frame
     private void FixedUpdate()
     {
         transform.position += stats.Speed * Time.deltaTime * direction.normalized;
     }
-    
+
     /// <summary>
     /// Sets target of projectile based off of movement input
     /// </summary>
@@ -19,7 +19,7 @@ public class ProjectileBehavior : MonoBehaviour
     {
         if (input != Vector2.zero)
         {
-            Vector3 targetVector = transform.position + (Vector3) input;
+            Vector3 targetVector = transform.position + (Vector3)input;
             direction = targetVector - transform.position;
         }
         else
@@ -30,12 +30,12 @@ public class ProjectileBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "StrongEnemy")
         {
             collision.gameObject.GetComponent<EnemyController>().RemoveHealth(stats.Damage);
         }
 
         Destroy(gameObject);
-        
+
     }
 }
