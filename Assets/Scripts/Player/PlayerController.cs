@@ -6,11 +6,14 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
     private SpriteRenderer sr;
-    //reg movement vars
-    public float moveSpeed;
-    [SerializeField] private int health;
 
-    public int Health { get { return health; } set { health = value; } }
+    [SerializeField] private PlayerStats stats;
+
+    //reg movement vars
+    private float moveSpeed;
+    private int currentHealth;
+
+    public int CurrentHealth { get { return currentHealth; } set { currentHealth = value; } }
 
     //dash var
     public float dashForce;
@@ -40,6 +43,9 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+
+        moveSpeed = stats.MoveSpeed;
+        currentHealth = stats.MaxHealth;
     }
 
     // Update is called once per frame
@@ -78,16 +84,16 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            health -= 1;
+            currentHealth -= 1;
             StartCoroutine(colorSwitch());
         }
         else if (collision.gameObject.tag == "StrongEnemy")
         {
-            health -= 2;
+            currentHealth -= 2;
             StartCoroutine(colorSwitch());
         }
 
-        if (health == 0)
+        if (currentHealth == 0)
         {
             Debug.Log("Player dead");
             Destroy(gameObject);
@@ -137,5 +143,30 @@ public class PlayerController : MonoBehaviour
         sr.color = Color.red;
         yield return new WaitForSeconds(1.0f);
         sr.color = Color.white;
+    }
+
+    /// <summary>
+    /// Sets player stats back to their max values (i.e, health is back to its default value)
+    /// </summary>
+    private void ResetPlayerStats()
+    {
+        foreach (Upgrade upgrade in stats.upgrades)
+        {
+            int upgradeValue = upgrade.Value * upgrade.Level;
+
+            switch (upgrade.Type)
+            {
+                case Upgrade.UpgradeType.Health:
+                    {
+                        currentHealth = stats.MaxHealth + upgradeValue;
+                        break;
+                    }
+                case Upgrade.UpgradeType.Damage:
+                    {
+                        // DAMAGE UPGRADE LOGIC HERE
+                        break;
+                    }
+            }
+        }
     }
 }

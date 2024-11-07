@@ -58,7 +58,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerController>().Health -= stats.AttackDamage;
+            collision.gameObject.GetComponent<PlayerController>().CurrentHealth -= stats.AttackDamage;
         }
 
         Debug.Log("I died!");
