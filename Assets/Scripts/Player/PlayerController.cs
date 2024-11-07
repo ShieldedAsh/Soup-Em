@@ -138,6 +138,7 @@ public class PlayerController : MonoBehaviour
         isAttacking = false;
     }
 
+
     private IEnumerator colorSwitch()
     {
         sr.color = Color.red;
@@ -159,9 +160,9 @@ public class PlayerController : MonoBehaviour
                 case Upgrade.UpgradeType.Health:
                     {
                         currentHealth = stats.MaxHealth + upgradeValue;
-                        
+
                         //Debug.Log($"Current health: {currentHealth}");
-                        
+
                         break;
                     }
                 case Upgrade.UpgradeType.Damage:
