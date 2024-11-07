@@ -307,11 +307,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1902863182}
         m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
-        m_MethodName: AppleDamageUpgrade
-        m_Mode: 1
+        m_MethodName: ApplyUpgrade
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 90fad56b6a9879345996c802bfca6904, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Upgrade, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -713,11 +713,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1902863182}
         m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
-        m_MethodName: ApplyHealthUpgrade
-        m_Mode: 1
+        m_MethodName: ApplyUpgrade
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: f5ffa1cc5cd37444da362136342424ba, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Upgrade, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

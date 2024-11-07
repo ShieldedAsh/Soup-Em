@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
 
         moveSpeed = stats.MoveSpeed;
         currentHealth = stats.MaxHealth;
+
+        ResetPlayerStats();
     }
 
     // Update is called once per frame
@@ -153,13 +155,12 @@ public class PlayerController : MonoBehaviour
     {
         foreach (Upgrade upgrade in stats.upgrades)
         {
-            int upgradeValue = upgrade.Value * upgrade.Level;
 
             switch (upgrade.Type)
             {
                 case Upgrade.UpgradeType.Health:
                     {
-                        currentHealth = stats.MaxHealth + upgradeValue;
+                        currentHealth = stats.MaxHealth + upgrade.Value;
 
                         //Debug.Log($"Current health: {currentHealth}");
 
