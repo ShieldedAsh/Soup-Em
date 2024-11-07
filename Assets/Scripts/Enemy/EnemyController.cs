@@ -10,11 +10,11 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D rb;
     private bool canMove;
     private SpriteRenderer sr;
-    private int health;
+    private int currentHealth;
 
     private void Start()
     {
-        health = 10;
+        currentHealth = stats.MaxHealth;
 
         if (targetPosition == null)
         {
@@ -39,7 +39,7 @@ public class EnemyController : MonoBehaviour
             transform.position += stats.MoveSpeed * Time.deltaTime * direction.normalized;
         }
 
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
             Debug.Log("Enemy dead");
@@ -50,7 +50,7 @@ public class EnemyController : MonoBehaviour
 
     public void RemoveHealth(int value)
     {
-        health -= value;
+        currentHealth -= value;
         StartCoroutine(colorSwitch());
     }
 
@@ -58,7 +58,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerController>().Health -= stats.AttackDamage;
+            collision.gameObject.GetComponent<PlayerController>().CurrentHealth -= stats.AttackDamage;
         }
 
         Debug.Log("I died!");
