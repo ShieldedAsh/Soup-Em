@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(colorSwitch());
         }
 
-        if (health == 0)
+        if (health <= 0)
         {
             Debug.Log("Player dead");
             Destroy(gameObject);
