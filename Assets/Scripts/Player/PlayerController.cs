@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(colorSwitch());
         }
 
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             Debug.Log("Player dead");
             Destroy(gameObject);
@@ -159,6 +159,9 @@ public class PlayerController : MonoBehaviour
                 case Upgrade.UpgradeType.Health:
                     {
                         currentHealth = stats.MaxHealth + upgradeValue;
+                        
+                        //Debug.Log($"Current health: {currentHealth}");
+                        
                         break;
                     }
                 case Upgrade.UpgradeType.Damage:
