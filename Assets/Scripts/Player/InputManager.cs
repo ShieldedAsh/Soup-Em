@@ -5,6 +5,7 @@ public class InputManager : MonoBehaviour
 {
     public static PlayerControls controls;
 
+    //initlize controls on awake
     private void Awake()
     {
         // Singleton
@@ -16,7 +17,5 @@ public class InputManager : MonoBehaviour
         {
             Destroy(this);
         }
-
-        
     }
 }

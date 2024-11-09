@@ -9,6 +9,7 @@ public class ProjectileBehavior : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
+        //move the projectile
         transform.position += stats.Speed * Time.deltaTime * direction.normalized;
     }
 
@@ -31,19 +32,23 @@ public class ProjectileBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //obtain the controller of the enemy or strong enemy and remove health from them
         if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "StrongEnemy")
         {
             collision.gameObject.GetComponent<EnemyController>().RemoveHealth(stats.Damage);
         }
-        else if(collision.gameObject.tag == "BossEnemy")
+        //obtain the controller of the boss enemy and remove health from it
+        else if (collision.gameObject.tag == "BossEnemy")
         {
             collision.gameObject.GetComponent<BossController>().RemoveHealth(stats.Damage);
         }
-        else if(collision.gameObject.tag == "Player")
+        //allow the player to take damage from projectiles (the boss shoots projectiles)
+        else if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerController>().ProjectileDamage();
         }
 
+        //after a collision, destroy the projectile
         Destroy(gameObject);
 
     }

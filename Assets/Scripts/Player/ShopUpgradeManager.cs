@@ -20,6 +20,7 @@ public class ShopUpgradeManager : MonoBehaviour
         }
     }
 
+    //when the start run button is clicked, load the first level
     public void StartRun()
     {
         Debug.Log("Start run!");

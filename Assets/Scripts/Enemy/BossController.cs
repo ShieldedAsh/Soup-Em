@@ -1,3 +1,4 @@
+//pretty much the same as the player controller, as the boss shoots projectiles
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -72,7 +73,7 @@ public class BossController : MonoBehaviour
 
     private void OnDestroy()
     {
-        
+
     }
 
     private void Attack()

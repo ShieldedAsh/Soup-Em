@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
+        //set current health to the max health at the start of the level
         currentHealth = stats.MaxHealth;
 
         if (targetTransform.position == null)
@@ -25,17 +26,19 @@ public class EnemyController : MonoBehaviour
             return;
         }
 
+        //obtain the rigidbody and sprite renderer of the enemy
         rb = gameObject.GetComponent<Rigidbody2D>();
         canMove = true;
-
         sr = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
     {
+        //create a raycast to detect the player
         Vector3 direction = targetTransform.position - transform.position;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, visionRange, visionLayerMask);
 
+        //if the player is detected, move towards the player
         if (hit)
         {
             if (hit.collider.gameObject.CompareTag("Player") && canMove)
@@ -44,6 +47,7 @@ public class EnemyController : MonoBehaviour
             }
         }
 
+        //if the enemy's health is 0 or less, destroy the enemy
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
@@ -51,6 +55,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    //method called when a projectile hits the enemy (it removes health from the enemy)
     public void RemoveHealth(int value)
     {
         currentHealth -= value;
@@ -59,6 +64,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //if the enemy collides with the player, remove health from the player
         if (collision.gameObject.tag == "Player")
         {
             PlayerController.CurrentHealth -= stats.AttackDamage;
@@ -72,6 +78,7 @@ public class EnemyController : MonoBehaviour
         // Debug.Log("FUcxk i died");
     }
 
+    //switch the color of the enemy when damaged
     private IEnumerator colorSwitch()
     {
         sr.color = Color.red;
