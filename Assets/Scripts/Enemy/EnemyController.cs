@@ -5,8 +5,9 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] private EnemyData stats;
     [SerializeField] private Transform targetTransform;
+    [SerializeField] private float visionRange;
+    [SerializeField] private LayerMask visionLayerMask;
 
-    private Vector3 targetPosition;
     private Rigidbody2D rb;
     private bool canMove;
     private SpriteRenderer sr;
@@ -16,7 +17,7 @@ public class EnemyController : MonoBehaviour
     {
         currentHealth = stats.MaxHealth;
 
-        if (targetPosition == null)
+        if (targetTransform.position == null)
         {
             // if a target cannot be found, destroy this enemy instantly so it does not become a vegetable
             Debug.Log($"{gameObject.name}: Target not found!");
@@ -33,10 +34,14 @@ public class EnemyController : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 direction = targetTransform.position - transform.position;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, visionRange, visionLayerMask);
 
-        if (canMove)
+        if (hit)
         {
-            transform.position += stats.MoveSpeed * Time.deltaTime * direction.normalized;
+            if (hit.collider.gameObject.CompareTag("Player") && canMove)
+            {
+                transform.position += stats.MoveSpeed * Time.deltaTime * direction.normalized;
+            }
         }
 
         if (currentHealth <= 0)
@@ -44,8 +49,6 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
             Debug.Log("Enemy dead");
         }
-
-
     }
 
     public void RemoveHealth(int value)

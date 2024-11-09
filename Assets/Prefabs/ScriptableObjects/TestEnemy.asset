@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TestEnemy
   m_EditorClassIdentifier: 
   maxHealth: 10
-  moveSpeed: 3
+  moveSpeed: 2.5
   attackDamage: 3
