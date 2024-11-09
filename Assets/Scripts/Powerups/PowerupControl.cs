@@ -15,7 +15,7 @@ public class PowerupControl : MonoBehaviour
         if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
             Debug.Log("All enemies dead");
-            SceneManager.LoadScene("Upgrade Scene");
+            // SceneManager.LoadScene("Upgrade Scene");
         }
     }
 }

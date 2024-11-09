@@ -155,7 +155,6 @@ public class PlayerController : MonoBehaviour
     {
         foreach (Upgrade upgrade in stats.upgrades)
         {
-
             switch (upgrade.Type)
             {
                 case UpgradeType.Health:
