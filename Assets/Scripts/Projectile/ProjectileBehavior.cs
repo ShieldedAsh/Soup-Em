@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ProjectileBehavior : MonoBehaviour
@@ -30,9 +31,14 @@ public class ProjectileBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "StrongEnemy")
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "StrongEnemy" 
+            || collision.gameObject.tag == "BossEnemy")
         {
             collision.gameObject.GetComponent<EnemyController>().RemoveHealth(stats.Damage);
+        }
+        else if(collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerController>().ProjectileDamage();
         }
 
         Destroy(gameObject);

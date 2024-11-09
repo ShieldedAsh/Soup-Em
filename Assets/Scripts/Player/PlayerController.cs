@@ -95,11 +95,26 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(colorSwitch());
         }
 
+        else if (collision.gameObject.tag == "BossEnemy")
+        {
+            currentHealth -= 5;
+            StartCoroutine(colorSwitch());
+        }
+
         if (currentHealth <= 0)
         {
             Debug.Log("Player dead");
             Destroy(gameObject);
         }
+    }
+
+    /// <summary>
+    /// Allows the player to take damage from projectiles (should be called in ProjectileBehavior)
+    /// </summary>
+    public void ProjectileDamage()
+    {
+        currentHealth -= 1;
+        StartCoroutine(colorSwitch());
     }
 
 

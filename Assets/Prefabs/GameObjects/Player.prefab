@@ -103,8 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8305144948232526324}
-  moveSpeed: 10
-  health: 0
+  stats: {fileID: 0}
   dashForce: 100
   dashDuration: 0
   ProjectilePrefab: {fileID: 538685968676676921, guid: 25d3a9ed1d83f7a91b7919b9fce17021, type: 3}

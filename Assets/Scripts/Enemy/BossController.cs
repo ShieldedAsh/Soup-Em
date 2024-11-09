@@ -50,11 +50,12 @@ public class BossController : MonoBehaviour
             Debug.Log("Enemy dead");
         }
 
-
+        Attack();
     }
 
     public void RemoveHealth(int value)
     {
+        Debug.Log("been hit");
         currentHealth -= value;
         StartCoroutine(colorSwitch());
     }
@@ -106,6 +107,6 @@ public class BossController : MonoBehaviour
     {
         sr.color = Color.red;
         yield return new WaitForSeconds(1.0f);
-        //Input base color here
+        sr.color = Color.magenta;
     }
 }
