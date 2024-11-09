@@ -8,6 +8,7 @@ TagManager:
   - Chili
   - Projectile
   - StrongEnemy
+  - BossEnemy
   layers:
   - Default
   - TransparentFX
