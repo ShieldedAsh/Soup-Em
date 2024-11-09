@@ -19,7 +19,7 @@ public class BossController : MonoBehaviour
 
     private void Start()
     {
-        currentHealth = stats.MaxHealth;
+        currentHealth = 50;
 
         if (targetPosition == null)
         {
@@ -87,11 +87,22 @@ public class BossController : MonoBehaviour
     private IEnumerator ShootProjecctile()
     {
         isAttacking = true;
-        Vector2 launchPosition = transform.position;
+        Vector2 launchPosition;
+        launchPosition.y = transform.position.y + 5.9f;
+        launchPosition.x = transform.position.x;
 
         ProjectileBehavior projectile = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
+        launchPosition.y = transform.position.y - 5.9f;
+        launchPosition.x = transform.position.x;
+
         ProjectileBehavior projectile2 = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
+        launchPosition.y = transform.position.y;
+        launchPosition.x = transform.position.x - 5.9f;
+
         ProjectileBehavior projectile3 = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
+        launchPosition.y = transform.position.y;
+        launchPosition.x = transform.position.x + 5.9f;
+
         ProjectileBehavior projectile4 = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
 
         projectile.SetTarget(Vector2.up);

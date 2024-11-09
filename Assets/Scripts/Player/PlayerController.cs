@@ -117,6 +117,12 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth -= 1;
         StartCoroutine(colorSwitch());
+
+        if (currentHealth <= 0)
+        {
+            Debug.Log("Player dead");
+            Destroy(gameObject);
+        }
     }
 
 
@@ -133,7 +139,9 @@ public class PlayerController : MonoBehaviour
     private IEnumerator ShootProjecctile()
     {
         isAttacking = true;
-        Vector2 launchPosition = transform.position;
+        Vector2 launchPosition;
+        launchPosition.y = transform.position.y + 1;
+        launchPosition.x = transform.position.x;
         //Vector2 moveInput = controls.Combat.Attack.ReadValue<Vector2>();
 
         /*  if (moveInput != Vector2.zero)
@@ -146,9 +154,19 @@ public class PlayerController : MonoBehaviour
         }*/
 
         ProjectileBehavior projectile = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
+        launchPosition.y = transform.position.y - 1;
+        launchPosition.x = transform.position.x;
+
         ProjectileBehavior projectile2 = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
+        launchPosition.y = transform.position.y;
+        launchPosition.x = transform.position.x - 1;
+
         ProjectileBehavior projectile3 = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
+        launchPosition.y = transform.position.y;
+        launchPosition.x = transform.position.x + 1;
+
         ProjectileBehavior projectile4 = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
+
         projectile.SetTarget(Vector2.up);
         projectile2.SetTarget(Vector2.down);
         projectile3.SetTarget(Vector2.left);

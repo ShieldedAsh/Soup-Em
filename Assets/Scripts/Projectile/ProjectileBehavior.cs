@@ -31,10 +31,13 @@ public class ProjectileBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "StrongEnemy" 
-            || collision.gameObject.tag == "BossEnemy")
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "StrongEnemy")
         {
             collision.gameObject.GetComponent<EnemyController>().RemoveHealth(stats.Damage);
+        }
+        else if(collision.gameObject.tag == "BossEnemy")
+        {
+            collision.gameObject.GetComponent<BossController>().RemoveHealth(stats.Damage);
         }
         else if(collision.gameObject.tag == "Player")
         {
