@@ -4,11 +4,11 @@ using UnityEngine;
 public class EnemyData : ScriptableObject
 {
     [SerializeField] private int maxHealth;
-    [SerializeField] private int moveSpeed;
+    [SerializeField] private float moveSpeed;
     [SerializeField] private int attackDamage;
     // Reward on death todo after initial demo
 
-    public int MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
+    public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
     public int AttackDamage { get { return attackDamage; } set { attackDamage = value; } }
     public int MaxHealth { get { return maxHealth; } set { maxHealth = value; } }
 }
