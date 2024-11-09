@@ -8,6 +8,7 @@ public class PlayerStats : ScriptableObject
     [SerializeField] private int damagePerShot;
     [SerializeField] private float moveSpeed;
     [SerializeField] private int money;
+    [SerializeField] private ProjectileData projectileData;
     
     public List<Upgrade> upgrades;
 
@@ -15,4 +16,5 @@ public class PlayerStats : ScriptableObject
     public int Damage { get { return damagePerShot; } set { damagePerShot = value; } }
     public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
     public int Money { get { return money; } set { money = value; } }
+    public ProjectileData ProjData { get { return projectileData; } set { projectileData = value; } }
 }

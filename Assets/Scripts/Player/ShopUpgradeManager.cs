@@ -4,9 +4,6 @@ using UnityEngine.Events;
 public class ShopUpgradeManager : MonoBehaviour
 {
     [SerializeField] private PlayerStats playerStats;
-    [SerializeField] private GameObject healthUpgradeButton;
-    [SerializeField] private GameObject damageUpgradeButton;
-
 
     [SerializeField] private Upgrade healthUpgrade;
     [SerializeField] private Upgrade damageUpgrade;
@@ -23,6 +20,12 @@ public class ShopUpgradeManager : MonoBehaviour
             playerStats.Money -= upgradeToApply.Cost;
         }
         
+    }
+
+    public void StartRun()
+    {
+        Debug.Log("Start run!");
+        // Code here
     }
 
     // TODO: Move this into an object that is present in every scene
