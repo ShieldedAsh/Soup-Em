@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4578369316777897840}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,9 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2499065916995250864}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.47, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -103,9 +103,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8305144948232526324}
-  stats: {fileID: 0}
+  stats: {fileID: 11400000, guid: 44a7be8112ea8aa4982de5a7e68ca7d5, type: 2}
   dashForce: 100
-  dashDuration: 0
+  dashDuration: 0.25
   ProjectilePrefab: {fileID: 538685968676676921, guid: 25d3a9ed1d83f7a91b7919b9fce17021, type: 3}
   LaunchOffset: {fileID: 200727127307525127}
 --- !u!50 &8305144948232526324
