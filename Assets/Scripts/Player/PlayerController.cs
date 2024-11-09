@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour
 
             switch (upgrade.Type)
             {
-                case Upgrade.UpgradeType.Health:
+                case UpgradeType.Health:
                     {
                         currentHealth = stats.MaxHealth + upgrade.Value;
 
@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
 
                         break;
                     }
-                case Upgrade.UpgradeType.Damage:
+                case UpgradeType.Damage:
                     {
                         // DAMAGE UPGRADE LOGIC HERE
                         break;
