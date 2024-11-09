@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         currentHealth = stats.MaxHealth;
 
         //enable sprite renderer
-        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        sr.enabled = true;
 
         SetPlayerStats();
     }
