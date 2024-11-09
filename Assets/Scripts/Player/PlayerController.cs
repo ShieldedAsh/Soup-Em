@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
         moveSpeed = stats.MoveSpeed;
         currentHealth = stats.MaxHealth;
 
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+
         SetPlayerStats();
     }
 
@@ -105,6 +107,9 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Player dead");
             controls.Combat.Disable();
+
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
             Time.timeScale = 0;
             SceneMan.instance.DeathUI.SetActive(true);
         }

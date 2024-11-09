@@ -2745,6 +2745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7276c28e22ffc4b4594048a9ac5cd519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathUI: {fileID: 1603400759}
 --- !u!1 &1785034445
 GameObject:
   m_ObjectHideFlags: 0
@@ -3344,6 +3345,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2057627750}
+  - {fileID: 1603400760}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3643,3 +3645,4 @@ SceneRoots:
   - {fileID: 1392977439}
   - {fileID: 1140482465}
   - {fileID: 1141725838}
+  - {fileID: 1717086288}
