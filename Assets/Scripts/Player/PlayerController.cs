@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player dead");
             controls.Combat.Disable();
 
-            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            sr.enabled = false;
 
             Time.timeScale = 0;
             SceneMan.instance.DeathUI.SetActive(true);
