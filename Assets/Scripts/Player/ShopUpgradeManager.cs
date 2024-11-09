@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class ShopUpgradeManager : MonoBehaviour
 {
@@ -19,13 +19,14 @@ public class ShopUpgradeManager : MonoBehaviour
             playerStats.upgrades.Add(upgradeToApply);
             playerStats.Money -= upgradeToApply.Cost;
         }
-        
+
     }
 
     public void StartRun()
     {
         Debug.Log("Start run!");
         // Code here
+        SceneManager.LoadScene("Level1");
     }
 
     // TODO: Move this into an object that is present in every scene
