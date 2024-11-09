@@ -11,9 +11,9 @@ public class PlayerController : MonoBehaviour
 
     //reg movement vars
     private float moveSpeed;
-    private int currentHealth;
+    private static int currentHealth;
 
-    public int CurrentHealth { get { return currentHealth; } set { currentHealth = value; } }
+    public static int CurrentHealth { get { return currentHealth; } set { currentHealth = value; } }
 
     //dash var
     public float dashForce;
@@ -104,7 +104,9 @@ public class PlayerController : MonoBehaviour
         if (currentHealth <= 0)
         {
             Debug.Log("Player dead");
-            Destroy(gameObject);
+            controls.Combat.Disable();
+            Time.timeScale = 0;
+            SceneMan.instance.DeathUI.SetActive(true);
         }
     }
 

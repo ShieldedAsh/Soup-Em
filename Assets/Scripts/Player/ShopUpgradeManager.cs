@@ -7,8 +7,6 @@ public class ShopUpgradeManager : MonoBehaviour
     [SerializeField] private Upgrade healthUpgrade;
     [SerializeField] private Upgrade damageUpgrade;
 
-    public int sceneCounter = 0;
-
     /// <summary>
     /// Applies an upgrade to the player if they have enough money
     /// </summary>
@@ -20,15 +18,12 @@ public class ShopUpgradeManager : MonoBehaviour
             playerStats.upgrades.Add(upgradeToApply);
             playerStats.Money -= upgradeToApply.Cost;
         }
-
     }
 
     public void StartRun()
     {
         Debug.Log("Start run!");
         SceneManager.LoadScene(1);
-
-        sceneCounter++;
     }
 
     // TODO: Move this into an object that is present in every scene
