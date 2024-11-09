@@ -4,9 +4,10 @@ using UnityEngine.SceneManagement;
 public class ShopUpgradeManager : MonoBehaviour
 {
     [SerializeField] private PlayerStats playerStats;
-
     [SerializeField] private Upgrade healthUpgrade;
     [SerializeField] private Upgrade damageUpgrade;
+
+    public int sceneCounter = 0;
 
     /// <summary>
     /// Applies an upgrade to the player if they have enough money
@@ -26,7 +27,26 @@ public class ShopUpgradeManager : MonoBehaviour
     {
         Debug.Log("Start run!");
         // Code here
-        SceneManager.LoadScene("Level1");
+        switch (sceneCounter)
+        {
+            case 0:
+                SceneManager.LoadScene("Level1");
+                break;
+            case 1:
+                SceneManager.LoadScene("Level2");
+                break;
+            case 2:
+                SceneManager.LoadScene("Level3");
+                break;
+            case 3:
+                SceneManager.LoadScene("Level4");
+                break;
+            case 4:
+                SceneManager.LoadScene("Level5");
+                break;
+        }
+
+        sceneCounter++;
     }
 
     // TODO: Move this into an object that is present in every scene
