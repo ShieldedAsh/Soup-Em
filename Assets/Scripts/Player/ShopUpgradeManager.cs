@@ -100,6 +100,7 @@ public class ShopUpgradeManager : MonoBehaviour
         }
     }
 
+    // Refreshes the upgrade display so it displays current information
     private void RefreshUpgradeDisplay()
     {
         TextMeshProUGUI textComponent = upgradeDisplayText.GetComponent<TextMeshProUGUI>();
