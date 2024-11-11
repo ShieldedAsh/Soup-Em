@@ -52,6 +52,7 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(gameObject);
             Debug.Log("Enemy dead");
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().AddMoney(stats.MoneyOnDeath);
         }
     }
 
@@ -67,15 +68,8 @@ public class EnemyController : MonoBehaviour
         //if the enemy collides with the player, remove health from the player
         if (collision.gameObject.tag == "Player")
         {
-            PlayerController.CurrentHealth -= stats.AttackDamage;
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().CurrentHealth -= stats.AttackDamage;
         }
-
-        Debug.Log("I died!");
-    }
-
-    private void OnDestroy()
-    {
-        // Debug.Log("FUcxk i died");
     }
 
     //switch the color of the enemy when damaged

@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,8 +14,8 @@ public class PlayerController : MonoBehaviour
 
     //reg movement vars
     private float moveSpeed;
-    private static int currentHealth;
-    public static int CurrentHealth { get { return currentHealth; } set { currentHealth = value; } }
+    private int currentHealth;
+    public int CurrentHealth { get { return currentHealth; } set { currentHealth = value; } }
 
     //dash vars
     public float dashForce;
@@ -92,7 +93,11 @@ public class PlayerController : MonoBehaviour
         if (rb.linearVelocity != Vector2.zero && !isDashing)
         {
             IEnumerator dashCoroutine = PerformDash();
-            StartCoroutine(dashCoroutine);
+
+            if (rb != null)
+            {
+                StartCoroutine(dashCoroutine);
+            }
         }
     }
 
@@ -231,5 +236,16 @@ public class PlayerController : MonoBehaviour
                     }
             }
         }
+    }
+
+    public void AddMoney(int amount)
+    {
+        stats.Money += amount;
+    }
+
+    private void OnApplicationQuit()
+    {
+        stats.upgrades.Clear();
+        stats.Money = 0;
     }
 }
