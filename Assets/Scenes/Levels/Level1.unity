@@ -2040,6 +2040,10 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 5496230521825194794, guid: 137bc8f14f0e6df4792494212c1c3856, type: 3}
+      propertyPath: visionRange
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5496230521825194794, guid: 137bc8f14f0e6df4792494212c1c3856, type: 3}
       propertyPath: targetTransform
       value: 
       objectReference: {fileID: 678178455}
