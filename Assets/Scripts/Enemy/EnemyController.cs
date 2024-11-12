@@ -77,13 +77,10 @@ public class EnemyController : MonoBehaviour
     {
         sr.color = Color.red;
         yield return new WaitForSeconds(1.0f);
-        if (gameObject.tag == "Enemy")
+        if (gameObject.tag == "Enemy" || gameObject.tag == "StrongEnemy")
         {
-            sr.color = Color.cyan;
+            sr.color = Color.white;
         }
-        else if (gameObject.tag == "StrongEnemy")
-        {
-            sr.color = Color.yellow;
-        }
+
     }
 }
