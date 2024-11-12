@@ -13,6 +13,10 @@ public class EnemyController : MonoBehaviour
     private SpriteRenderer sr;
     private int currentHealth;
 
+    private Vector3 direction;
+
+    public Vector3 Directon { get { return direction; } }
+
     private void Start()
     {
         //set current health to the max health at the start of the level
@@ -35,7 +39,7 @@ public class EnemyController : MonoBehaviour
     private void FixedUpdate()
     {
         //create a raycast to detect the player
-        Vector3 direction = targetTransform.position - transform.position;
+        direction = targetTransform.position - transform.position;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, visionRange, visionLayerMask);
 
         //if the player is detected, move towards the player

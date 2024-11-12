@@ -104,6 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 8305144948232526324}
   stats: {fileID: 11400000, guid: 44a7be8112ea8aa4982de5a7e68ca7d5, type: 2}
+  knockbackCoeffecient: 3
   dashForce: 100
   dashDuration: 0.25
   ProjectilePrefab: {fileID: 538685968676676921, guid: 25d3a9ed1d83f7a91b7919b9fce17021, type: 3}

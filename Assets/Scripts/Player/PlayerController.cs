@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     //load in the player's stats
     [SerializeField] private PlayerStats stats;
+    [SerializeField] private float knockbackCoeffecient;
 
     //reg movement vars
     private float moveSpeed;
@@ -24,6 +25,8 @@ public class PlayerController : MonoBehaviour
     private PlayerControls controls;
     private bool isDashing;
     private bool isAttacking;
+    private bool canMove;
+    private bool isPaused;
 
     //load projectile prefab and the offset of where the projectile will be launched from
     public ProjectileBehavior ProjectilePrefab;
@@ -35,11 +38,15 @@ public class PlayerController : MonoBehaviour
         controls = InputManager.controls;
         controls.Combat.Enable();
 
+        canMove = true;
+
         controls.Combat.Dash.performed += Dash;
         isDashing = false;
 
         controls.Combat.Attack.performed += Attack;
         isAttacking = false;
+
+        controls.Combat.Pause.performed += PauseGame;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -62,7 +69,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         //prevent the player from spam dashing
-        if (!isDashing)
+        if (canMove)
         {
             Move(controls.Combat.Move.ReadValue<Vector2>());
         }
@@ -104,20 +111,26 @@ public class PlayerController : MonoBehaviour
         //remove one health if the player collides with a regular enemy
         if (collision.gameObject.tag == "Enemy")
         {
+            rb.AddForce(collision.gameObject.GetComponent<EnemyController>().Directon * knockbackCoeffecient, ForceMode2D.Impulse);
             stats.CurrentHealth -= 1;
             StartCoroutine(colorSwitch());
+            StartCoroutine(LockControls(.25f));
         }
         //remove 2 health if the player collides with a strong enemy
         else if (collision.gameObject.tag == "StrongEnemy")
         {
+            rb.AddForce(collision.gameObject.GetComponent<EnemyController>().Directon * knockbackCoeffecient, ForceMode2D.Impulse);
             stats.CurrentHealth -= 2;
             StartCoroutine(colorSwitch());
+            StartCoroutine(LockControls(.25f));
         }
         //remove 5 health if the player collides with a boss enemy
         else if (collision.gameObject.tag == "BossEnemy")
         {
+            rb.AddForce(collision.gameObject.GetComponent<EnemyController>().Directon * knockbackCoeffecient, ForceMode2D.Impulse);
             stats.CurrentHealth -= 5;
             StartCoroutine(colorSwitch());
+            StartCoroutine(LockControls(.25f));
         }
 
         UIManager.instance.UpdateHealthUI();
@@ -170,16 +183,6 @@ public class PlayerController : MonoBehaviour
         Vector2 launchPosition;
         launchPosition.y = transform.position.y + 1;
         launchPosition.x = transform.position.x;
-        //Vector2 moveInput = controls.Combat.Attack.ReadValue<Vector2>();
-
-        /*  if (moveInput != Vector2.zero)
-        {
-            launchPosition += moveInput;
-        }
-        else
-        {
-            launchPosition += Vector2.up;
-        }*/
 
         ProjectileBehavior projectile = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
         launchPosition.y = transform.position.y - 1;
@@ -220,5 +223,28 @@ public class PlayerController : MonoBehaviour
     {
         stats.upgrades.Clear();
         stats.Money = 0;
+    }
+
+    private void PauseGame(InputAction.CallbackContext ctx)
+    {
+        if (!isPaused)
+        {
+            Time.timeScale = 0;
+            isPaused = true;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            isPaused = false;
+        }
+    }
+
+    private IEnumerator LockControls(float duration)
+    {
+        canMove = false;
+        controls.Combat.Disable();
+        yield return new WaitForSeconds(duration);
+        controls.Combat.Enable();
+        canMove = true;
     }
 }

@@ -23,6 +23,6 @@ public class UIManager : MonoBehaviour
 
     public void UpdateHealthUI()
     {
-        healthUIText.text = $"Health: {playerStats.CurrentHealth}";
+        healthUIText.text = $"Health: {Mathf.Clamp(playerStats.CurrentHealth, 0, playerStats.MaxHealth)}";
     }
 }
