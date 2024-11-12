@@ -87,20 +87,20 @@ public class BossController : MonoBehaviour
     {
         isAttacking = true;
         Vector2 launchPosition;
-        launchPosition.y = transform.position.y + 5.9f;
+        launchPosition.y = transform.position.y + 12f;
         launchPosition.x = transform.position.x;
 
         ProjectileBehavior projectile = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
-        launchPosition.y = transform.position.y - 5.9f;
+        launchPosition.y = transform.position.y - 12f;
         launchPosition.x = transform.position.x;
 
         ProjectileBehavior projectile2 = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
         launchPosition.y = transform.position.y;
-        launchPosition.x = transform.position.x - 5.9f;
+        launchPosition.x = transform.position.x - 12f;
 
         ProjectileBehavior projectile3 = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
         launchPosition.y = transform.position.y;
-        launchPosition.x = transform.position.x + 5.9f;
+        launchPosition.x = transform.position.x + 12f;
 
         ProjectileBehavior projectile4 = Instantiate(ProjectilePrefab, launchPosition, transform.rotation);
 
@@ -117,6 +117,6 @@ public class BossController : MonoBehaviour
     {
         sr.color = Color.red;
         yield return new WaitForSeconds(1.0f);
-        sr.color = Color.magenta;
+        sr.color = Color.white;
     }
 }
