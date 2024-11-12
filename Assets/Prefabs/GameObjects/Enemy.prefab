@@ -107,7 +107,7 @@ MonoBehaviour:
   visionRange: 8
   visionLayerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
 --- !u!50 &7837311363232813407
 Rigidbody2D:
   serializedVersion: 5

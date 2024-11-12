@@ -171,4 +171,4 @@ MonoBehaviour:
   visionRange: 8
   visionLayerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640

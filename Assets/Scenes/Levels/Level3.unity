@@ -1698,6 +1698,10 @@ PrefabInstance:
       propertyPath: targetTransform
       value: 
       objectReference: {fileID: 1365683856}
+    - target: {fileID: 5496230521825194794, guid: 137bc8f14f0e6df4792494212c1c3856, type: 3}
+      propertyPath: visionLayerMask.m_Bits
+      value: 640
+      objectReference: {fileID: 0}
     - target: {fileID: 8915588616289852893, guid: 137bc8f14f0e6df4792494212c1c3856, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16.60505
@@ -2046,10 +2050,6 @@ PrefabInstance:
     - target: {fileID: 786986065988202165, guid: 9d98c490898f1a8f7a7dda77397800b1, type: 3}
       propertyPath: m_Name
       value: StrongEnemy (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 786986065988202165, guid: 9d98c490898f1a8f7a7dda77397800b1, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3319682345394378738, guid: 9d98c490898f1a8f7a7dda77397800b1, type: 3}
       propertyPath: m_LocalPosition.x
