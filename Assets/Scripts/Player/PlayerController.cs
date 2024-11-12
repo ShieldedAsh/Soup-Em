@@ -51,14 +51,11 @@ public class PlayerController : MonoBehaviour
 
         //obtain move speed and health from the player's stats
         moveSpeed = stats.MoveSpeed;
-        stats.CurrentHealth = stats.MaxHealth;
 
         UIManager.instance.UpdateHealthUI();
 
         //enable sprite renderer
         sr.enabled = true;
-
-        SetPlayerStats();
     }
 
     // Update is called once per frame
@@ -212,33 +209,6 @@ public class PlayerController : MonoBehaviour
         sr.color = Color.red;
         yield return new WaitForSeconds(1.0f);
         sr.color = Color.white;
-    }
-
-    /// <summary>
-    /// Sets player stats back to their max values (i.e, health is back to its default value)
-    /// </summary>
-    private void SetPlayerStats()
-    {
-        foreach (Upgrade upgrade in stats.upgrades)
-        {
-            switch (upgrade.Type)
-            {
-                case UpgradeType.Health:
-                    {
-                        stats.MaxHealth += upgrade.Value;
-
-                        //Debug.Log($"Current health: {stats.CurrentHealth}");
-
-                        break;
-                    }
-                case UpgradeType.Damage:
-                    {
-                        // DAMAGE UPGRADE LOGIC HERE
-                        stats.ProjData.Damage += upgrade.Value;
-                        break;
-                    }
-            }
-        }
     }
 
     public void AddMoney(int amount)

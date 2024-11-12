@@ -60,6 +60,7 @@ public class ShopUpgradeManager : MonoBehaviour
     public void StartRun()
     {
         Debug.Log("Start run!");
+        playerStats.ApplyUpgradeVals();
         SceneManager.LoadScene(1);
     }
 
