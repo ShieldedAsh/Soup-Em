@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1456410037500241097}
   - component: {fileID: 4347089513968746839}
   - component: {fileID: 7160112328619414911}
+  - component: {fileID: 1367308773500767628}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -57,3 +58,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7276c28e22ffc4b4594048a9ac5cd519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathUI: {fileID: 0}
+--- !u!114 &1367308773500767628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2827667640035784595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05e73fec090e1774a8c7c459546a9095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: 44a7be8112ea8aa4982de5a7e68ca7d5, type: 2}
+  healthUIText: {fileID: 0}

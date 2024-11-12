@@ -15,6 +15,6 @@ MonoBehaviour:
   maxHealth: 5
   damagePerShot: 2
   moveSpeed: 4
-  money: 0
+  money: 10
   projectileData: {fileID: 11400000, guid: fe1cd83f040622c449a50ebce1edafdd, type: 2}
   upgrades: []
