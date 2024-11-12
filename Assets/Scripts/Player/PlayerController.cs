@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //prevent the player from spam dashing
+        //prevent the player from moving if they shouldnt be able to
         if (canMove)
         {
             Move(controls.Combat.Move.ReadValue<Vector2>());
@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
         //remove one health if the player collides with a regular enemy
         if (collision.gameObject.tag == "Enemy")
         {
-            rb.AddForce(collision.gameObject.GetComponent<EnemyController>().Directon * knockbackCoeffecient, ForceMode2D.Impulse);
+            rb.AddForce(collision.gameObject.GetComponent<EnemyController>().Directon.normalized * knockbackCoeffecient, ForceMode2D.Impulse);
             stats.CurrentHealth -= 1;
             StartCoroutine(colorSwitch());
             StartCoroutine(LockControls(.25f));
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
         //remove 2 health if the player collides with a strong enemy
         else if (collision.gameObject.tag == "StrongEnemy")
         {
-            rb.AddForce(collision.gameObject.GetComponent<EnemyController>().Directon * knockbackCoeffecient, ForceMode2D.Impulse);
+            rb.AddForce(collision.gameObject.GetComponent<EnemyController>().Directon.normalized * knockbackCoeffecient, ForceMode2D.Impulse);
             stats.CurrentHealth -= 2;
             StartCoroutine(colorSwitch());
             StartCoroutine(LockControls(.25f));
@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
         //remove 5 health if the player collides with a boss enemy
         else if (collision.gameObject.tag == "BossEnemy")
         {
-            rb.AddForce(collision.gameObject.GetComponent<EnemyController>().Directon * knockbackCoeffecient, ForceMode2D.Impulse);
+            rb.AddForce(collision.gameObject.GetComponent<EnemyController>().Directon.normalized * knockbackCoeffecient, ForceMode2D.Impulse);
             stats.CurrentHealth -= 5;
             StartCoroutine(colorSwitch());
             StartCoroutine(LockControls(.25f));
@@ -169,10 +169,12 @@ public class PlayerController : MonoBehaviour
     private IEnumerator PerformDash()
     {
         isDashing = true;
+        canMove = false;
         rb.linearVelocity *= 2;
         yield return new WaitForSeconds(dashDuration);
         rb.linearVelocity /= 2;
         isDashing = false;
+        canMove = true;
     }
 
     // Coroutine to perform the attack
