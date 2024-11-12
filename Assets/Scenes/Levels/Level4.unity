@@ -1633,6 +1633,10 @@ PrefabInstance:
       propertyPath: targetTransform
       value: 
       objectReference: {fileID: 1365683856}
+    - target: {fileID: 5496230521825194794, guid: 137bc8f14f0e6df4792494212c1c3856, type: 3}
+      propertyPath: visionLayerMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 8915588616289852893, guid: 137bc8f14f0e6df4792494212c1c3856, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.7532959
@@ -2400,6 +2404,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a58eef18b1e46124d805ab2a17bf05c8, type: 3}
+--- !u!114 &905917762 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7160112328619414911, guid: a58eef18b1e46124d805ab2a17bf05c8, type: 3}
+  m_PrefabInstance: {fileID: 905917761}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7276c28e22ffc4b4594048a9ac5cd519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &973424323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2816,7 +2831,7 @@ PrefabInstance:
     - target: {fileID: 3274273276072397394, guid: 6f417e2d0617b891c9de987485de3547, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 905917762}
     - target: {fileID: 3274273276072397394, guid: 6f417e2d0617b891c9de987485de3547, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: NextLevel
