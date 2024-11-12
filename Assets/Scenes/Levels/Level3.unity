@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StrongEnemy (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 786986065988202165, guid: 9d98c490898f1a8f7a7dda77397800b1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3319682345394378738, guid: 9d98c490898f1a8f7a7dda77397800b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.980495
@@ -232,6 +236,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CinemachineCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 6683251646024030198, guid: b71b4cb921e4a8f43bdcf4021bb34b43, type: 3}
+      propertyPath: Target.TrackingTarget
+      value: 
+      objectReference: {fileID: 1365683856}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -537,6 +545,7 @@ GameObject:
   - component: {fileID: 480826532}
   - component: {fileID: 480826531}
   - component: {fileID: 480826534}
+  - component: {fileID: 480826535}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -587,7 +596,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 28.8
+  orthographic size: 10.2
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -612,7 +621,7 @@ Transform:
   m_GameObject: {fileID: 480826530}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.42, y: 2.33, z: -10}
+  m_LocalPosition: {x: -21.04, y: 1.88, z: -10}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -662,6 +671,38 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &480826535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480826530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowDebugText: 0
+  ShowCameraFrustum: 1
+  IgnoreTimeScale: 0
+  WorldUpOverride: {fileID: 0}
+  ChannelMask: -1
+  UpdateMethod: 2
+  BlendUpdateMethod: 1
+  LensModeOverride:
+    Enabled: 0
+    DefaultMode: 2
+  DefaultBlend:
+    Style: 1
+    Time: 2
+    CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  CustomBlends: {fileID: 0}
 --- !u!1 &486273686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1936,6 +1977,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StrongEnemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 786986065988202165, guid: 9d98c490898f1a8f7a7dda77397800b1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3319682345394378738, guid: 9d98c490898f1a8f7a7dda77397800b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.925821
@@ -2001,6 +2046,10 @@ PrefabInstance:
     - target: {fileID: 786986065988202165, guid: 9d98c490898f1a8f7a7dda77397800b1, type: 3}
       propertyPath: m_Name
       value: StrongEnemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 786986065988202165, guid: 9d98c490898f1a8f7a7dda77397800b1, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3319682345394378738, guid: 9d98c490898f1a8f7a7dda77397800b1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2123,6 +2172,10 @@ PrefabInstance:
     - target: {fileID: 786986065988202165, guid: 9d98c490898f1a8f7a7dda77397800b1, type: 3}
       propertyPath: m_Name
       value: StrongEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 786986065988202165, guid: 9d98c490898f1a8f7a7dda77397800b1, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3319682345394378738, guid: 9d98c490898f1a8f7a7dda77397800b1, type: 3}
       propertyPath: m_LocalPosition.x
