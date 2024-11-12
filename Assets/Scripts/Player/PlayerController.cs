@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,8 +14,7 @@ public class PlayerController : MonoBehaviour
 
     //reg movement vars
     private float moveSpeed;
-    private static int currentHealth;
-    public static int CurrentHealth { get { return currentHealth; } set { currentHealth = value; } }
+    public int CurrentHealth { get { return stats.CurrentHealth; } set { stats.CurrentHealth = value; } }
 
     //dash vars
     public float dashForce;
@@ -51,7 +51,9 @@ public class PlayerController : MonoBehaviour
 
         //obtain move speed and health from the player's stats
         moveSpeed = stats.MoveSpeed;
-        currentHealth = stats.MaxHealth;
+        stats.CurrentHealth = stats.MaxHealth;
+
+        UIManager.instance.UpdateHealthUI();
 
         //enable sprite renderer
         sr.enabled = true;
@@ -92,7 +94,11 @@ public class PlayerController : MonoBehaviour
         if (rb.linearVelocity != Vector2.zero && !isDashing)
         {
             IEnumerator dashCoroutine = PerformDash();
-            StartCoroutine(dashCoroutine);
+
+            if (rb != null)
+            {
+                StartCoroutine(dashCoroutine);
+            }
         }
     }
 
@@ -101,24 +107,26 @@ public class PlayerController : MonoBehaviour
         //remove one health if the player collides with a regular enemy
         if (collision.gameObject.tag == "Enemy")
         {
-            currentHealth -= 1;
+            stats.CurrentHealth -= 1;
             StartCoroutine(colorSwitch());
         }
         //remove 2 health if the player collides with a strong enemy
         else if (collision.gameObject.tag == "StrongEnemy")
         {
-            currentHealth -= 2;
+            stats.CurrentHealth -= 2;
             StartCoroutine(colorSwitch());
         }
         //remove 5 health if the player collides with a boss enemy
         else if (collision.gameObject.tag == "BossEnemy")
         {
-            currentHealth -= 5;
+            stats.CurrentHealth -= 5;
             StartCoroutine(colorSwitch());
         }
 
+        UIManager.instance.UpdateHealthUI();
+
         //if the player's health is 0, the player is dead
-        if (currentHealth <= 0)
+        if (stats.CurrentHealth <= 0)
         {
             Debug.Log("Player dead");
             controls.Combat.Disable();
@@ -135,10 +143,10 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void ProjectileDamage()
     {
-        currentHealth -= 1;
+        stats.CurrentHealth -= 1;
         StartCoroutine(colorSwitch());
 
-        if (currentHealth <= 0)
+        if (stats.CurrentHealth <= 0)
         {
             Debug.Log("Player dead");
             Destroy(gameObject);
@@ -217,9 +225,9 @@ public class PlayerController : MonoBehaviour
             {
                 case UpgradeType.Health:
                     {
-                        currentHealth += upgrade.Value;
+                        stats.MaxHealth += upgrade.Value;
 
-                        //Debug.Log($"Current health: {currentHealth}");
+                        //Debug.Log($"Current health: {stats.CurrentHealth}");
 
                         break;
                     }
@@ -231,5 +239,16 @@ public class PlayerController : MonoBehaviour
                     }
             }
         }
+    }
+
+    public void AddMoney(int amount)
+    {
+        stats.Money += amount;
+    }
+
+    private void OnApplicationQuit()
+    {
+        stats.upgrades.Clear();
+        stats.Money = 0;
     }
 }

@@ -65,10 +65,8 @@ public class BossController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            PlayerController.CurrentHealth -= stats.AttackDamage;
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().CurrentHealth -= stats.AttackDamage;
         }
-
-        Debug.Log("I died!");
     }
 
     private void OnDestroy()

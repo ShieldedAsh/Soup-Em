@@ -15,3 +15,4 @@ MonoBehaviour:
   maxHealth: 10
   moveSpeed: 2.5
   attackDamage: 3
+  moneyOnDeath: 2

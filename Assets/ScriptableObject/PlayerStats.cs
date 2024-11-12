@@ -17,4 +17,5 @@ public class PlayerStats : ScriptableObject
     public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
     public int Money { get { return money; } set { money = value; } }
     public ProjectileData ProjData { get { return projectileData; } set { projectileData = value; } }
+    public int CurrentHealth { get; set; }
 }
