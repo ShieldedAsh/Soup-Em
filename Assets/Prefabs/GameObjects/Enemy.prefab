@@ -104,7 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 3e85756215847aa4eb0cf1f4aec87aa2, type: 2}
   targetTransform: {fileID: 0}
-  visionRange: 5
+  visionRange: 8
   visionLayerMask:
     serializedVersion: 2
     m_Bits: 640
